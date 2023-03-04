@@ -1,6 +1,7 @@
 import mongoose, { Schema, Types } from "mongoose";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
+import {env} from "process"
 dotenv.config()
 
 export const adminSchema = new Schema({
@@ -25,10 +26,12 @@ export const adminSchema = new Schema({
       "moderator"
     ]
   },
-  sweepstakes: [ {
+  sweepstakes: [
+ {
     type: Types.ObjectId,
     ref: "sweepstakes"
-  } ]
+  } 
+]
 }, { timestamps: true });
 
 adminSchema.pre("save", function (next) {
@@ -38,7 +41,8 @@ adminSchema.pre("save", function (next) {
   if (!user.isModified('password')) return next();
 
   // generate a salt
-  bcrypt.genSalt(process.env.SALT_WORK_FACTOR, function (err, salt) {
+
+  bcrypt.genSalt(env.SALT_WORK_FACTOR, function (err, salt) {
     if (err) return next(err);
 
     // hash the password using our new salt

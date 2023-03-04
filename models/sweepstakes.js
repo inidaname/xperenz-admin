@@ -21,18 +21,24 @@ export const sweepstakeSchema = new Schema({
     type: Number,
     required: [true, "Provide quantity of sweepstake"]
   },
-  participants: [{
+  participants: [
+{
     participantId: Types.ObjectId,
     ref: "users"
-  }],
-  winners: [{
+  }
+],
+  winners: [
+{
     winnersId: Types.ObjectId,
     ref: "user"
-  }],
-  admins: [{
+  }
+],
+  admins: [
+{
     type: Types.ObjectId,
     ref: "admin"
-  }]
+  }
+]
 }, {
   timestamps: true
 });

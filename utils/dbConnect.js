@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
+import { env } from "process"
 
 function connection() {
-  mongoose.connect(process.env.DATABASE_URL)
+
+  mongoose.connect(env.DATABASE_URL)
   mongoose.connection.on("error", function(err) {
     console.log(err)
   })
