@@ -1,18 +1,16 @@
 import express from "express";
 import cors from "cors"
 import helmet from "helmet";
-import dotenv from "dotenv";
 import routers from "./routes/index.js";
 import morgan from "morgan";
-
-dotenv.config()
+import logger from "./utils/logger.js";
+import { PORT } from "./config/config.js";
 
 import dbConnect from "./utils/dbConnect.js";
 import { developmentErrors, notFound, productionErrors } from "./middleware/errorHandlers.js";
 
 const app = express()
-const PORT = process.env.PORT
-
+dbConnect()
 app.use(morgan("combined"))
 app.use(cors())
 app.use(helmet())
@@ -20,12 +18,12 @@ app.use(helmet())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-// app.get("/admin/status", (req, res) => {
-//   res.json({
-//     status: 200,
-//     message: `You are welcome to Xperenz Admin ${new Date()}`
-//   })
-// })
+app.get("/admin/status", (req, res) => {
+  res.status(200).json({
+    status: 200,
+    message: `You are welcome to Xperenz Admin ${new Date()}`
+  })
+})
 
 app.use("/admin", routers)
 
@@ -41,4 +39,6 @@ if (app.get('env') === 'development') {
 // production error handler
 app.use(productionErrors);
 
-app.listen(PORT, () => console.log(`Admin is running on PORT: ${PORT}`))
+app.listen(PORT, () => {
+  logger.info(`Admin is running on PORT: ${PORT}`)
+})
