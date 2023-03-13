@@ -5,7 +5,7 @@ import { createToken } from "../utils/auth.js";
 export const createAdmin = async (req, res) => {
   try {
     const create = await admin.create({...req.body});
-    const token = createToken(create.email)
+    const token = createToken(create._id)
 
     return res.json({status: 200, message: "admin created", token, data: create})
   } catch (err) {

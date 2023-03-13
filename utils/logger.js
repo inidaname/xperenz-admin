@@ -22,6 +22,7 @@ const logger = createLogger({
   transports: [
     new transports.Console(),
     new transports.File({
+      level: "error",
       filename: "logs/server.log",
     }),
     new transports.MongoDB({

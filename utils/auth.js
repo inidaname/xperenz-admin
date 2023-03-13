@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { env } from "process"
-import config from "../config/config";
+import { JWTSign } from "../config/config.js";
 /**
  * For creating JWT token for authentication
  * @function createToken
@@ -21,7 +21,7 @@ export const createToken = (id) => {
 }
 
 export const verifyToken = (token) => {
-  const decoded = jwt.verify(token, config.JWTSign)
+  const decoded = jwt.verify(token, JWTSign)
   console.log(decoded)
   if (decoded) return true
   return false;

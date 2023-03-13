@@ -1,16 +1,15 @@
 import mongoose from "mongoose";
-import { env } from "process"
+import { DATABASE_URL } from "../config/config.js";
+import logger from "./logger.js";
 
-function connection() {
+export default function connection() {
 
-  mongoose.connect(env.DATABASE_URL)
+  mongoose.connect(DATABASE_URL)
   mongoose.connection.on("error", function(err) {
-    console.log(err)
+    logger.error(err)
   })
 
   mongoose.connection.on("open", function() {
-    console.log("Mongo Connected")
+    logger.info("Mongo Connected")
   })
 }
-
-export default connection()
