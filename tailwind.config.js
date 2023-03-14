@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        dashboardBg: "#F1F4FA",
+        dashboardBg: "#f0ecf0",
       }
     },
   },
