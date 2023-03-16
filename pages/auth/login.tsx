@@ -1,13 +1,13 @@
-import { useToast } from "@chakra-ui/toast";
+import LoginForm from "@design-system/template/forms/login-form";
+import AuthLayout from "@design-system/template/layout/auth-layout";
 import { NextPage } from "next";
 
 const Login: NextPage = () => {
-  const toast = useToast()
   return (
-    <>
+    <AuthLayout>
+      <LoginForm />
+    </AuthLayout>
+  );
+};
 
-    </>
-  )
-}
-
-export default Login
+export default Login;
