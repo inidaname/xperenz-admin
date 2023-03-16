@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^2.5.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@hookform/error-message": "^2.0.1",
     "@radix-ui/react-icons": "^1.2.0",
     "@svgr/webpack": "^6.5.1",
     "@types/node": "18.14.6",
