@@ -39,7 +39,7 @@ const LoginForm: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="lg:w-[622px] md:w-[622px] sm:w-[400px] h-[649px] bg-white flex flex-col justify-center items-start space-y-[40px] p-[40px] pb-[64px] rounded-[16px] shadow-lg"
+      className="xs:w-auto md:w-[622px] h-[649px] bg-white flex flex-col justify-center items-start space-y-[40px] p-[40px] pb-[64px] rounded-[16px] shadow-lg"
     >
       <Box className="space-y-[8px] mb-[24px]">
         <HeadingText fontSize="2xl" as="h5">
@@ -49,7 +49,7 @@ const LoginForm: React.FC = () => {
           Welcome to the Admin section
         </Paragraph>
       </Box>
-      <InputFormControl label="Email" classstyle="relative !w-[550px]">
+      <InputFormControl label="Email">
         <Input
           placeholder="some@mail.me"
           type="email"
@@ -60,7 +60,7 @@ const LoginForm: React.FC = () => {
         />
         <FormError errors={errors} name="email" />
       </InputFormControl>
-      <InputFormControl label="Password" classstyle="!w-[550px]">
+      <InputFormControl label="Password">
         <InputGroup size="md">
           <Input
             type={show ? "text" : "password"}
