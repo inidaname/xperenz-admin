@@ -12,7 +12,7 @@ export default function Home() {
       <Head>
         <title>Admin Dashboard</title>
       </Head>
-      <main>
+      <main className='w-screen'>
         <Input />
         
       </main>
