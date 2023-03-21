@@ -5,7 +5,7 @@ import BrandLogo from '@public/img/login-brand-logo.svg'
 
 const AuthLayout: React.FC<IAuthLayoutProps> = ({children}) => {
   return (
-    <div className="min-h-[100vh] bg-dashboardBg flex items-center justify-center w-screen">
+    <div className="min-h-[100vh] bg-dashboardBg flex items-center justify-center">
     <ScreenWidth classstyle="bg-dashboardBg py-[50px] w-fit 3xl:py-[120px] relative">
       <ContainerLayout classstyle="flex !flex-col w-fit !items-center relative space-y-[32px]">
       <BrandLogo />

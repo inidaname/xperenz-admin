@@ -63,6 +63,7 @@ const LoginForm: React.FC = () => {
       <InputFormControl label="Password">
         <InputGroup size="md">
           <Input
+            placeholder="Password"
             type={show ? "text" : "password"}
             {...register("password", {
               required: "Please provide login password",
