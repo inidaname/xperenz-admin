@@ -14,7 +14,7 @@ interface ClassStyle {
 interface ILayoutProp  extends React.HTMLAttributes<HTMLDivElement>, ReactChildren, ClassStyle {}
 
 interface IAuthLayoutProps extends ReactChildren {
-  
+  title?: string;  
 }
 
 interface IFormLogin {
@@ -50,3 +50,9 @@ type IInputTypes = IInputFormControl & import("@chakra-ui/react").InputProps
 type ITextProps = import("@chakra-ui/react").TextProps & ClassStyle & {}
 
 type IButton = import("@chakra-ui/react").ButtonProps & ClassStyle & {}
+
+// Redux, Reducer, Slice tyoes
+interface IAuthSlice {
+  user?: null | string;
+  token?: null | string;
+}
