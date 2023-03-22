@@ -84,7 +84,7 @@ const LoginForm: React.FC = () => {
           </InputRightElement>
         </InputGroup>
       </InputFormControl>
-      <Paragraph>Forgot Password</Paragraph>
+      <Paragraph>Forgot Password?</Paragraph>
       <Box width="full" className="space-y-[25px]">
         <Button classstyle="!bg-xbtnColor !hover:bg-cyan-600 hover:text-gray-700">Login</Button>
         <Paragraph align="center">This is the admin section to login to user section click here</Paragraph>

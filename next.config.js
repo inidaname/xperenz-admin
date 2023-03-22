@@ -13,16 +13,16 @@ const nextConfig = {
 
     return config;
   },
-  // env: getEnvConfig(),
+  env: getEnvConfig(),
 }
 
-// function getEnvConfig() {
-//   const environment = process.env.TARGET_ENV || process.env.NODE_ENV;
-//   try {
-//     return require(`./env-${environment}.json`);
-//   } catch (err) {
-//     return require("./env-development.json");
-//   }
-// }
+function getEnvConfig() {
+  const environment = process.env.TARGET_ENV || process.env.NODE_ENV;
+  try {
+    return require(`./env-${environment}.json`);
+  } catch (err) {
+    return require("./env-development.json");
+  }
+}
 
 module.exports = nextConfig

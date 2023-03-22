@@ -7,6 +7,7 @@ export default function Document() {
             name="keywords"
             content="Avoid Regulatory Pitfalls and Fraud with CaaS."
           />
+          <meta property="og:title" content="My page title" key="title" />
       <Head />
       <body>
         <Main />
