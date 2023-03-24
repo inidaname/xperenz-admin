@@ -11,10 +11,13 @@ interface ClassStyle {
 }
 
 // Screen component props interface
-interface ILayoutProp  extends React.HTMLAttributes<HTMLDivElement>, ReactChildren, ClassStyle {}
+interface ILayoutProp
+  extends React.HTMLAttributes<HTMLDivElement>,
+    ReactChildren,
+    ClassStyle {}
 
 interface IAuthLayoutProps extends ReactChildren {
-  title?: string;  
+  title?: string;
 }
 
 interface IFormLogin {
@@ -22,22 +25,22 @@ interface IFormLogin {
   password: string;
 }
 
-interface ILabel extends ReactChildren, React.HTMLAttributes<HTMLLabelElement>, ClassStyle {
+interface ILabel
+  extends ReactChildren,
+    React.HTMLAttributes<HTMLLabelElement>,
+    ClassStyle {
   labelFor: string;
 }
 
 interface IFieldSet extends ILayoutProp {}
 
-interface IInputFormControl extends ClassStyle {
+interface IInputFormControl extends ClassStyle {}
 
-}
-
-
-type IHeadingProp = import("@chakra-ui/react").HeadingProps & ClassStyle & {}
+type IHeadingProp = import("@chakra-ui/react").HeadingProps & ClassStyle & {};
 
 interface IFormError extends ReactChildren, ClassStyle {}
 interface IRenderInput<T> {
-  field: T
+  field: T;
 }
 
 interface IFormError {
@@ -45,14 +48,30 @@ interface IFormError {
   name: string;
 }
 
-type IInputTypes = IInputFormControl & import("@chakra-ui/react").InputProps
+type IInputTypes = IInputFormControl & import("@chakra-ui/react").InputProps;
 
-type ITextProps = import("@chakra-ui/react").TextProps & ClassStyle & {}
+type ITextProps = import("@chakra-ui/react").TextProps & ClassStyle & {};
 
-type IButton = import("@chakra-ui/react").ButtonProps & ClassStyle & {}
+type IButton = import("@chakra-ui/react").ButtonProps & ClassStyle & {};
 
 // Redux, Reducer, Slice tyoes
 interface IAuthSlice {
   user?: null | string;
   token?: null | string;
+}
+
+interface ILoginResData {
+  error: boolean;
+  accessToken: string;
+  isVerified: boolean;
+}
+
+interface ILoginPayload {
+  email: string;
+  password: string;
+}
+
+interface IToastOptions {
+  message: string;
+  type?: "info" | "warning" | "success" | "error" | "loading";
 }

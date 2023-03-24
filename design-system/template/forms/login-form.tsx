@@ -1,18 +1,28 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useToast } from "@chakra-ui/toast";
 import { EyeClosedIcon, EyeOpenIcon } from "@radix-ui/react-icons";
 import {
   Input,
   InputFormControl,
 } from "@design-system/components/inputs/input-control";
 import HeadingText from "@design-system/text/heading";
-import { Box, InputGroup, InputRightElement, useBoolean } from "@chakra-ui/react";
+import {
+  Box,
+  InputGroup,
+  InputRightElement,
+  useBoolean,
+} from "@chakra-ui/react";
 import FormError from "../feedbacks/formerror";
 import Paragraph from "@design-system/text/paragraph";
 import Button from "@design-system/components/controls/Button";
+import { useLoginMutation } from "@app/services/auth/login.api-slice";
+import { useDispatch } from "react-redux";
+import { useToast } from "@hooks/useToast";
 
 const LoginForm: React.FC = () => {
+  const [login, { isLoading }] = useLoginMutation();
+  const dispatch = useDispatch();
+  const toasted = useToast();
   const {
     register,
     handleSubmit,
@@ -21,11 +31,25 @@ const LoginForm: React.FC = () => {
     trigger,
   } = useForm<IFormLogin>({ mode: "onChange" });
 
-  const toast = useToast();
-
   const [show, setShow] = useBoolean();
 
-  const onSubmit: SubmitHandler<IFormLogin> = () => ({});
+  const onSubmit: SubmitHandler<IFormLogin> = (values) => {
+    login({
+      email: values.email,
+      password: values.password,
+    })
+      .unwrap()
+      .then((res) => {
+        // TODO: work on storing logged in
+        toasted({
+          message: "Logged In Successfully",
+          type: "success",
+        });
+      })
+      .catch((err) => {
+        toasted({ message: err?.data?.message, type: "error" });
+      });
+  };
 
   const handleBlur = async (fieldName: keyof IFormLogin) => {
     if (touchedFields[fieldName]) {
@@ -86,8 +110,12 @@ const LoginForm: React.FC = () => {
       </InputFormControl>
       <Paragraph>Forgot Password?</Paragraph>
       <Box width="full" className="space-y-[25px]">
-        <Button classstyle="!bg-xbtnColor !hover:bg-cyan-600 hover:text-gray-700">Login</Button>
-        <Paragraph align="center">This is the admin section to login to user section click here</Paragraph>
+        <Button classstyle="!bg-xbtnColor !hover:bg-cyan-600 hover:text-gray-700">
+          Login
+        </Button>
+        <Paragraph align="center">
+          This is the admin section to login to user section click here
+        </Paragraph>
       </Box>
     </form>
   );
