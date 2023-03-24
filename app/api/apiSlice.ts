@@ -9,7 +9,7 @@ import { Mutex } from "async-mutex";
 const mutex = new Mutex();
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: process.env.API,
+  baseUrl: "http://localhost:51741/admin",
   mode: "cors",
 
   prepareHeaders: (headers, _) => {

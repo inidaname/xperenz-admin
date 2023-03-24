@@ -1,9 +1,8 @@
-import React from 'react';
-import { Button as ChakraButton } from '@chakra-ui/react';
-import { joinClasses } from '@design-system/util/join-classes';
+import React from "react";
+import { Button as ChakraButton } from "@chakra-ui/react";
+import { joinClasses } from "@design-system/util/join-classes";
 
-const Button: React.FC<IButton> = ({children, classstyle, ...props}) => {
-
+const Button: React.FC<IButton> = ({ children, classstyle, ...props }) => {
   const rest: IButton = {
     shadow: props.shadow || "sm",
     width: props.width || "full",
@@ -11,14 +10,21 @@ const Button: React.FC<IButton> = ({children, classstyle, ...props}) => {
     // backgroundColor: props.backgroundColor || "#950067",
     textColor: props.textColor || "white",
     textTransform: props.textTransform || "uppercase",
+    // transition: props.transition || "all 0.2s cubic-bezier(.08,.52,.52,1)",
     ...props,
-  }
+  };
 
   return (
-      <ChakraButton className={joinClasses(classstyle)} {...rest}>
-        {children}
-      </ChakraButton>
-  )
-}
+    <ChakraButton
+      _active={{
+        transform: "scale(0.99)",
+      }}
+      className={joinClasses(classstyle)}
+      {...rest}
+    >
+      {children}
+    </ChakraButton>
+  );
+};
 
-export default Button
+export default Button;

@@ -62,8 +62,7 @@ interface IAuthSlice {
 
 interface ILoginResData {
   error: boolean;
-  accessToken: string;
-  isVerified: boolean;
+  token: string;
 }
 
 interface ILoginPayload {

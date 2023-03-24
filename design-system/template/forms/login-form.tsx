@@ -18,6 +18,7 @@ import Button from "@design-system/components/controls/Button";
 import { useLoginMutation } from "@app/services/auth/login.api-slice";
 import { useDispatch } from "react-redux";
 import { useToast } from "@hooks/useToast";
+import { setCredentials } from "@app/features/auth-slice";
 
 const LoginForm: React.FC = () => {
   const [login, { isLoading }] = useLoginMutation();
@@ -26,11 +27,11 @@ const LoginForm: React.FC = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, touchedFields },
+    formState: { errors, touchedFields, isValid },
     clearErrors,
     trigger,
   } = useForm<IFormLogin>({ mode: "onChange" });
-
+console.log(isValid)
   const [show, setShow] = useBoolean();
 
   const onSubmit: SubmitHandler<IFormLogin> = (values) => {
@@ -40,6 +41,8 @@ const LoginForm: React.FC = () => {
     })
       .unwrap()
       .then((res) => {
+        console.log(res)
+        setCredentials({token: res.token})
         // TODO: work on storing logged in
         toasted({
           message: "Logged In Successfully",
@@ -110,7 +113,13 @@ const LoginForm: React.FC = () => {
       </InputFormControl>
       <Paragraph>Forgot Password?</Paragraph>
       <Box width="full" className="space-y-[25px]">
-        <Button classstyle="!bg-xbtnColor !hover:bg-cyan-600 hover:text-gray-700">
+        <Button
+          isLoading={isLoading}
+          isDisabled={!isValid}
+          loadingText="Loading"
+          type="submit"
+          classstyle="!bg-xbtnColor hover:!bg-hbtnColor hover:text-gray-100 disabled:!bg-[#dfb3d1]"
+        >
           Login
         </Button>
         <Paragraph align="center">
