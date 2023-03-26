@@ -74,3 +74,6 @@ interface IToastOptions {
   message: string;
   type?: "info" | "warning" | "success" | "error" | "loading";
 }
+
+
+interface IRequiredAuth extends ReactChildren {}

@@ -19,9 +19,12 @@ import { useLoginMutation } from "@app/services/auth/login.api-slice";
 import { useDispatch } from "react-redux";
 import { useToast } from "@hooks/useToast";
 import { setCredentials } from "@app/features/auth-slice";
+import { useRouter } from "next/router";
+import { setSessionToken } from "@helpers/session-manager";
 
 const LoginForm: React.FC = () => {
   const [login, { isLoading }] = useLoginMutation();
+  const router = useRouter();
   const dispatch = useDispatch();
   const toasted = useToast();
   const {
@@ -31,7 +34,7 @@ const LoginForm: React.FC = () => {
     clearErrors,
     trigger,
   } = useForm<IFormLogin>({ mode: "onChange" });
-console.log(isValid)
+
   const [show, setShow] = useBoolean();
 
   const onSubmit: SubmitHandler<IFormLogin> = (values) => {
@@ -41,15 +44,22 @@ console.log(isValid)
     })
       .unwrap()
       .then((res) => {
-        console.log(res)
-        setCredentials({token: res.token})
+        console.log(res);
+        const token = res.token
+        setSessionToken(token)
+        dispatch(setCredentials({ token: res.token, user: res.token }));
         // TODO: work on storing logged in
         toasted({
           message: "Logged In Successfully",
           type: "success",
         });
+
+        if (token) {
+          router.push("/");
+        }
       })
       .catch((err) => {
+        console.error(err)
         toasted({ message: err?.data?.message, type: "error" });
       });
   };
