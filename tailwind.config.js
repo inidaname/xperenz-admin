@@ -14,6 +14,7 @@ module.exports = {
       colors: {
         dashboardBg: "#f0ecf0",
         xbtnColor: "#950067",
+        hbtnColor: "#680048",
         altColor: "#ca80b3",
       }
     },

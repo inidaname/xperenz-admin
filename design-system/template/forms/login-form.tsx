@@ -18,15 +18,19 @@ import Button from "@design-system/components/controls/Button";
 import { useLoginMutation } from "@app/services/auth/login.api-slice";
 import { useDispatch } from "react-redux";
 import { useToast } from "@hooks/useToast";
+import { setCredentials } from "@app/features/auth-slice";
+import { useRouter } from "next/router";
+import { setSessionToken } from "@helpers/session-manager";
 
 const LoginForm: React.FC = () => {
   const [login, { isLoading }] = useLoginMutation();
+  const router = useRouter();
   const dispatch = useDispatch();
   const toasted = useToast();
   const {
     register,
     handleSubmit,
-    formState: { errors, touchedFields },
+    formState: { errors, touchedFields, isValid },
     clearErrors,
     trigger,
   } = useForm<IFormLogin>({ mode: "onChange" });
@@ -40,13 +44,22 @@ const LoginForm: React.FC = () => {
     })
       .unwrap()
       .then((res) => {
+        console.log(res);
+        const token = res.token
+        setSessionToken(token)
+        dispatch(setCredentials({ token: res.token, user: res.token }));
         // TODO: work on storing logged in
         toasted({
           message: "Logged In Successfully",
           type: "success",
         });
+
+        if (token) {
+          router.push("/");
+        }
       })
       .catch((err) => {
+        console.error(err)
         toasted({ message: err?.data?.message, type: "error" });
       });
   };
@@ -110,7 +123,13 @@ const LoginForm: React.FC = () => {
       </InputFormControl>
       <Paragraph>Forgot Password?</Paragraph>
       <Box width="full" className="space-y-[25px]">
-        <Button classstyle="!bg-xbtnColor !hover:bg-cyan-600 hover:text-gray-700">
+        <Button
+          isLoading={isLoading}
+          isDisabled={!isValid}
+          loadingText="Loading"
+          type="submit"
+          classstyle="!bg-xbtnColor hover:!bg-hbtnColor hover:text-gray-100 disabled:!bg-[#dfb3d1]"
+        >
           Login
         </Button>
         <Paragraph align="center">

@@ -1,1 +1,6 @@
-{}
+{
+  "APP_NAME": "Xperenz Admin",
+  "NEXT_PUBLIC_APP_ENV": "development",
+  "NEXT_PUBLIC_SESSION_TOKEN": "Xperenz_admin",
+  "API_BASE": "http://localhost:51741/admin"
+}

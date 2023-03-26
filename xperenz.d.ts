@@ -62,8 +62,7 @@ interface IAuthSlice {
 
 interface ILoginResData {
   error: boolean;
-  accessToken: string;
-  isVerified: boolean;
+  token: string;
 }
 
 interface ILoginPayload {
@@ -75,3 +74,6 @@ interface IToastOptions {
   message: string;
   type?: "info" | "warning" | "success" | "error" | "loading";
 }
+
+
+interface IRequiredAuth extends ReactChildren {}

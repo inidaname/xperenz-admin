@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ContainerLayout from "@design-system/components/layout/container";
 import ScreenWidth from "@design-system/components/layout/screen-width";
 import BrandLogo from "@public/img/login-brand-logo.svg";
 import Head from "next/head";
+import { getSessionToken } from "@helpers/session-manager";
+import { useRouter } from "next/router";
 
 const AuthLayout: React.FC<IAuthLayoutProps> = ({ children, title }) => {
+  const router = useRouter()
+  useEffect(() => {
+    if (getSessionToken()) {
+      router.push("/")
+    }
+  }, [])
   return (
     <>
       <Head>
