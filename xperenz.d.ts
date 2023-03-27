@@ -76,4 +76,12 @@ interface IToastOptions {
 }
 
 
-interface IRequiredAuth extends ReactChildren {}
+interface IRequiredAuth extends ReactChildren, ClassStyle {}
+
+interface ILayout extends ReactChildren, ClassStyle {
+  title?: string;
+}
+
+interface ISideBar extends ClassStyle {}
+
+type ISideBarProps = ISideBar & import("@chakra-ui/react").FlexProps

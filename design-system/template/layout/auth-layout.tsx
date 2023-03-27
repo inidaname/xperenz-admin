@@ -12,7 +12,7 @@ const AuthLayout: React.FC<IAuthLayoutProps> = ({ children, title }) => {
     if (getSessionToken()) {
       router.push("/")
     }
-  }, [])
+  }, [router])
   return (
     <>
       <Head>
