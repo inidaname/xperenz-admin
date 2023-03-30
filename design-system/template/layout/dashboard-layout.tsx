@@ -1,7 +1,8 @@
 import { Box, HStack, VStack } from "@chakra-ui/react";
 import { joinClasses } from "@design-system/util/join-classes";
+import useCheckSession from "@hooks/useCheckSession";
 import Head from "next/head";
-import React from "react";
+import React, { memo } from "react";
 import Sidebar from "./sidebar";
 
 const DashboardLayout: React.FC<ILayout> = ({
@@ -10,6 +11,9 @@ const DashboardLayout: React.FC<ILayout> = ({
   title,
   ...props
 }) => {
+
+  useCheckSession()
+
   return (
     <>
       <Head>
@@ -29,4 +33,4 @@ const DashboardLayout: React.FC<ILayout> = ({
   );
 };
 
-export default DashboardLayout;
+export default memo(DashboardLayout);
