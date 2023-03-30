@@ -34,32 +34,6 @@ const baseQueryWithReauth: BaseQueryFn<
   await mutex.waitForUnlock();
   let result = await baseQuery(args, api, extraOption);
 
-  // if (result.error && result?.error?.status === 401) {
-  //   if (!mutex.isLocked()) {
-  //     const release = await mutex.acquire();
-
-  //     try {
-  //       const refreshResult = await baseQuery(
-  //         {
-  //           credentials: "include",
-  //           url: "/auth/refresh",
-  //         },
-  //         api,
-  //         extraOption
-  //       );
-
-  //       if (refreshResult.data) {
-  //         result = await baseQuery(args, api, extraOption)
-  //       }
-  //     } finally {
-  //       release()
-  //     }
-  //   } else {
-  //     await mutex.waitForUnlock()
-  //     result = await baseQuery(args, api, extraOption)
-  //   }
-  // }
-
   return result;
 };
 
