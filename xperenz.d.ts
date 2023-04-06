@@ -11,10 +11,12 @@ interface ClassStyle {
 }
 
 // Screen component props interface
-interface ILayoutProp
+interface IContainer
   extends React.HTMLAttributes<HTMLDivElement>,
     ReactChildren,
     ClassStyle {}
+
+type IContainerProps = IContainer & import("@chakra-ui/react").ContainerProps
 
 interface IAuthLayoutProps extends ReactChildren {
   title?: string;
@@ -78,10 +80,14 @@ interface IToastOptions {
 
 interface IRequiredAuth extends ReactChildren, ClassStyle {}
 
-interface ILayout extends ReactChildren, ClassStyle {
+interface ILayout extends ClassStyle {
   title?: string;
 }
+
+type IStackLayout = ILayout & import("@chakra-ui/react").StackProps
 
 interface ISideBar extends ClassStyle {}
 
 type ISideBarProps = ISideBar & import("@chakra-ui/react").FlexProps
+
+interface IAuthUserData {}

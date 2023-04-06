@@ -4,7 +4,7 @@ import Head from "next/head";
 import React, { memo } from "react";
 import Sidebar from "./sidebar";
 
-const DashboardLayout: React.FC<ILayout> = ({
+const DashboardLayout: React.FC<IStackLayout> = ({
   children,
   classstyle,
   title,
@@ -18,10 +18,10 @@ const DashboardLayout: React.FC<ILayout> = ({
       </Head>
       <VStack
         as="div"
-        className={joinClasses(classstyle, "w-screen border-box border")}
+        className={joinClasses(classstyle, "min-h-screen border-box")}
         {...props}
       >
-        <HStack as="div" className="w-full border">
+        <HStack as="div" justifyContent="space-between" alignItems="flex-start" className="w-full">
           <Sidebar /> {children}
         </HStack>
         <Box as="div">Footer</Box>

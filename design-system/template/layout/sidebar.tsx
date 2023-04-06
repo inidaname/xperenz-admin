@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { Flex, IconButton } from "@chakra-ui/react";
+import { Box, Flex, IconButton } from "@chakra-ui/react";
 import { BackpackIcon, CalendarIcon, GearIcon, HamburgerMenuIcon, HomeIcon, PersonIcon } from "@radix-ui/react-icons"
 import NavItem from "../Items/nav-item";
+import BrandLogo from "@public/img/login-brand-logo.svg";
+import Logo from "@public/img/xperenz.svg";
+
 
 const Sidebar: React.FC<ISideBarProps> = ({
   classstyle,
@@ -15,6 +18,7 @@ const Sidebar: React.FC<ISideBarProps> = ({
       pos={props.pos || "sticky"}
       left={props.left || "5"}
       h={props.h || "95vh"}
+      top={props.top || "1"}
       marginTop={props.marginTop || "2.5vh"}
       boxShadow={props.boxShadow || "0 4px 12px 0 rgba(0, 0, 0, 0.05)"}
       borderRadius={navSize == "small" ? "15px" : "30px"}
@@ -52,6 +56,11 @@ const Sidebar: React.FC<ISideBarProps> = ({
         <NavItem navSize={navSize} icon={BackpackIcon} title="Reports" />
         <NavItem navSize={navSize} icon={GearIcon} title="Settings" />
       </Flex>
+
+      <Box as="div" className="w-fill p-5">
+        {navSize === "small" ? (<Logo width="100%" />) : (<BrandLogo />) }
+        
+      </Box>
     </Flex>
   );
 };

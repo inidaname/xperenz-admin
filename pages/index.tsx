@@ -9,7 +9,11 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <RequireAuth>
-      <DashboardLayout />
+      <DashboardLayout>
+        <div className="w-fill border h-[70px]">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit iusto minima odio, accusamus magnam eaque expedita saepe inventore sit amet! Consequatur consequuntur, exercitationem consectetur fugit iure reprehenderit nihil nostrum sed.
+        </div>
+      </DashboardLayout>
     </RequireAuth>
   );
 }
