@@ -9,17 +9,15 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import NavHoverBox from "./nav-hover-box";
-import { IconProps } from "@radix-ui/react-icons/dist/types";
 
-interface INavItemProp {
-  icon: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<SVGSVGElement>>;
-  title: string;
-  description?: string;
-  active?: boolean;
-  navSize: string;
-}
-
-export default function NavItem({ icon, title, description, active, navSize }: INavItemProp) {
+export default function NavItem({
+  icon,
+  title,
+  description,
+  active,
+  navSize,
+  href,
+}: INavItemProp) {
   return (
     <Flex
       mt={30}
@@ -29,6 +27,7 @@ export default function NavItem({ icon, title, description, active, navSize }: I
     >
       <Menu placement="right">
         <Link
+          href={href}
           backgroundColor={active ? "#AEC8CA" : ""}
           p={3}
           borderRadius={8}

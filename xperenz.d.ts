@@ -16,7 +16,7 @@ interface IContainer
     ReactChildren,
     ClassStyle {}
 
-type IContainerProps = IContainer & import("@chakra-ui/react").ContainerProps
+type IContainerProps = IContainer & import("@chakra-ui/react").ContainerProps;
 
 interface IAuthLayoutProps extends ReactChildren {
   title?: string;
@@ -77,17 +77,30 @@ interface IToastOptions {
   type?: "info" | "warning" | "success" | "error" | "loading";
 }
 
-
 interface IRequiredAuth extends ReactChildren, ClassStyle {}
 
 interface ILayout extends ClassStyle {
   title?: string;
 }
 
-type IStackLayout = ILayout & import("@chakra-ui/react").StackProps
+type IStackLayout = ILayout & import("@chakra-ui/react").StackProps;
 
 interface ISideBar extends ClassStyle {}
 
-type ISideBarProps = ISideBar & import("@chakra-ui/react").FlexProps
+type ISideBarProps = ISideBar & import("@chakra-ui/react").FlexProps;
 
 interface IAuthUserData {}
+
+interface INavItemProp {
+  icon: React.ForwardRefExoticComponent<
+    import("@radix-ui/react-icons/dist/types").IconProps &
+      React.RefAttributes<SVGSVGElement>
+  >;
+  title: string;
+  href?: string;
+  description?: string;
+  active?: boolean;
+  navSize: string;
+}
+
+type IBox = import("@chakra-ui/react").BoxProps & ClassStyle & {};

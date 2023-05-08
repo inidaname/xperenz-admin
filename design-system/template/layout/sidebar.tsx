@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { Box, Flex, IconButton } from "@chakra-ui/react";
-import { BackpackIcon, CalendarIcon, GearIcon, HamburgerMenuIcon, HomeIcon, PersonIcon } from "@radix-ui/react-icons"
+import {
+  BackpackIcon,
+  CalendarIcon,
+  GearIcon,
+  HamburgerMenuIcon,
+  HomeIcon,
+  PersonIcon,
+} from "@radix-ui/react-icons";
 import NavItem from "../Items/nav-item";
 import BrandLogo from "@public/img/login-brand-logo.svg";
 import Logo from "@public/img/xperenz.svg";
-
 
 const Sidebar: React.FC<ISideBarProps> = ({
   classstyle,
@@ -12,8 +18,10 @@ const Sidebar: React.FC<ISideBarProps> = ({
   ...props
 }) => {
   const [navSize, changeNavSize] = useState("large");
+  const [active, setActive] = useState(false);
   return (
     <Flex
+      border="1px"
       as={props.as || "aside"}
       pos={props.pos || "sticky"}
       left={props.left || "5"}
@@ -48,18 +56,39 @@ const Sidebar: React.FC<ISideBarProps> = ({
         <NavItem
           navSize={navSize}
           icon={HomeIcon}
+          href="/"
           title="Dashboard"
           description="This is the description for the dashboard."
+          active
         />
-        <NavItem navSize={navSize} icon={CalendarIcon} title="Calendar" active />
-        <NavItem navSize={navSize} icon={PersonIcon} title="Clients" />
-        <NavItem navSize={navSize} icon={BackpackIcon} title="Reports" />
-        <NavItem navSize={navSize} icon={GearIcon} title="Settings" />
+        <NavItem
+          navSize={navSize}
+          icon={CalendarIcon}
+          title="Sweepstakes"
+          href="/sweepstakes"
+        />
+        <NavItem
+          navSize={navSize}
+          icon={PersonIcon}
+          title="Participants"
+          href="/participants"
+        />
+        <NavItem
+          navSize={navSize}
+          icon={BackpackIcon}
+          title="Reports"
+          href="/reports"
+        />
+        <NavItem
+          navSize={navSize}
+          icon={GearIcon}
+          title="Settings"
+          href="/settings"
+        />
       </Flex>
 
       <Box as="div" className="w-fill p-5">
-        {navSize === "small" ? (<Logo width="100%" />) : (<BrandLogo />) }
-        
+        {navSize === "small" ? <Logo width="100%" /> : <BrandLogo />}
       </Box>
     </Flex>
   );
