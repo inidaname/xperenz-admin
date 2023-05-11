@@ -5,7 +5,6 @@ import {
   Input,
   InputFormControl,
 } from "@design-system/components/inputs/input-control";
-import HeadingText from "@design-system/text/heading";
 import {
   Box,
   InputGroup,
@@ -13,7 +12,7 @@ import {
   useBoolean,
 } from "@chakra-ui/react";
 import FormError from "../feedbacks/formerror";
-import Paragraph from "@design-system/text/paragraph";
+import { Paragraph, Heading as HeadingText } from "@design-system/template";
 import Button from "@design-system/components/controls/Button";
 import { useLoginMutation } from "@app/services/auth/login.api-slice";
 import { useDispatch } from "react-redux";
@@ -45,8 +44,8 @@ const LoginForm: React.FC = () => {
       .unwrap()
       .then((res) => {
         console.log(res);
-        const token = res.token
-        setSessionToken(token)
+        const token = res.token;
+        setSessionToken(token);
         dispatch(setCredentials({ token: res.token, user: res.token }));
         // TODO: work on storing logged in
         toasted({
@@ -59,7 +58,7 @@ const LoginForm: React.FC = () => {
         }
       })
       .catch((err) => {
-        console.error(err)
+        console.error(err);
         toasted({ message: err?.data?.message, type: "error" });
       });
   };
@@ -128,7 +127,7 @@ const LoginForm: React.FC = () => {
           isDisabled={!isValid}
           loadingText="Loading"
           type="submit"
-          classstyle="!bg-xbtnColor hover:!bg-hbtnColor hover:text-gray-100 disabled:!bg-[#dfb3d1]"
+          className="!bg-xbtnColor hover:!bg-hbtnColor hover:text-gray-100 disabled:!bg-[#dfb3d1]"
         >
           Login
         </Button>

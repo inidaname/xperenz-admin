@@ -7,20 +7,20 @@ import { getSessionToken } from "@helpers/session-manager";
 import { useRouter } from "next/router";
 
 const AuthLayout: React.FC<IAuthLayoutProps> = ({ children, title }) => {
-  const router = useRouter()
+  const router = useRouter();
   useEffect(() => {
     if (getSessionToken()) {
-      router.push("/")
+      router.push("/");
     }
-  }, [router])
+  }, [router]);
   return (
     <>
       <Head>
         <meta property="og:title" content={`Admin: ${title}`} key="title" />
       </Head>
       <div className="min-h-[100vh] bg-dashboardBg flex items-center justify-center">
-        <ScreenWidth classstyle="bg-dashboardBg py-[50px] w-fit 3xl:py-[120px] relative">
-          <ContainerLayout classstyle="flex !flex-col w-fit !items-center relative space-y-[32px]">
+        <ScreenWidth className="bg-dashboardBg py-[50px] w-fit 3xl:py-[120px] relative">
+          <ContainerLayout className="flex !flex-col w-fit !items-center relative space-y-[32px]">
             <BrandLogo />
             {children}
           </ContainerLayout>
