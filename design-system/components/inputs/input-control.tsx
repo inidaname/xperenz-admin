@@ -8,7 +8,7 @@ import { joinClasses } from "@design-system/util/join-classes";
 import React from "react";
 
 const Input = React.forwardRef<React.ElementRef<"input">, IInputTypes>(
-  ({ classstyle, ...props }, ref) => {
+  ({ className, ...props }, ref) => {
     const rest = {
       background: props.background || "#F5F5F7",
       borderColor: props.borderColor || "gray.300",
@@ -20,24 +20,33 @@ const Input = React.forwardRef<React.ElementRef<"input">, IInputTypes>(
       shadow: props.shadow || "sm",
       ...props,
     };
-    return <ChakraInput {...rest} className={joinClasses(classstyle)} ref={ref} />;
+    return (
+      <ChakraInput {...rest} className={joinClasses(className)} ref={ref} />
+    );
   }
 );
 
 Input.displayName = "Input";
 
 interface IFormControl extends FormControlProps {
-  classstyle?: string;
+  className?: string;
 }
 
 const InputFormControl: React.FC<IFormControl> = ({
   label,
-  classstyle,
+  className,
   children,
   ...props
 }) => {
   return (
-    <FormControl as="fieldset" {...props} className={joinClasses(classstyle, "flex flex-col items-start space-y-[8px]")}>
+    <FormControl
+      as="fieldset"
+      {...props}
+      className={joinClasses(
+        className,
+        "flex flex-col items-start space-y-[8px]"
+      )}
+    >
       <>
         <FormLabel as="label" htmlFor={label}>
           {label}

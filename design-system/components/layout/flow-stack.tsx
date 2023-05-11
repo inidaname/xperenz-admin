@@ -3,12 +3,12 @@ import { joinClasses } from "@design-system/util/join-classes";
 import React from "react";
 
 const FlowStack: React.FC<IStackLayout> = ({
-  classstyle,
+  className,
   children,
   ...props
 }) => {
   return (
-    <HStack className={joinClasses("", classstyle)} {...props}>
+    <HStack className={joinClasses("", className)} {...props}>
       {children}
     </HStack>
   );

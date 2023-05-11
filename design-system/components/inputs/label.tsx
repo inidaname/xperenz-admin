@@ -1,16 +1,17 @@
-import { joinClasses } from '@design-system/util/join-classes'
-import React from 'react'
+import { joinClasses } from "@design-system/util/join-classes";
+import React from "react";
 
-const Label: React.FC<ILabel> = ({children, classstyle, labelFor, ...props}) => {
+const Label: React.FC<ILabel> = ({
+  children,
+  className,
+  labelFor,
+  ...props
+}) => {
   return (
-    <label
-    {...props}
-    htmlFor={labelFor}
-    className={joinClasses(classstyle)}
-    >
+    <label {...props} htmlFor={labelFor} className={joinClasses(className)}>
       {children}
     </label>
-  )
-}
+  );
+};
 
-export default Label
+export default Label;

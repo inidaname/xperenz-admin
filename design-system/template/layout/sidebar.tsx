@@ -13,7 +13,7 @@ import BrandLogo from "@public/img/login-brand-logo.svg";
 import Logo from "@public/img/xperenz.svg";
 
 const Sidebar: React.FC<ISideBarProps> = ({
-  classstyle,
+  className,
   children,
   ...props
 }) => {
@@ -78,6 +78,12 @@ const Sidebar: React.FC<ISideBarProps> = ({
           icon={BackpackIcon}
           title="Reports"
           href="/reports"
+        />
+        <NavItem
+          navSize={navSize}
+          icon={GearIcon}
+          title="Support"
+          href="/support"
         />
         <NavItem
           navSize={navSize}
