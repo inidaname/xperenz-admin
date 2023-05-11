@@ -55,6 +55,7 @@ type IInputTypes = IInputFormControl & import("@chakra-ui/react").InputProps;
 type ITextProps = import("@chakra-ui/react").TextProps & {};
 
 type IButton = import("@chakra-ui/react").ButtonProps & {};
+type ITextarea = import("@chakra-ui/react").TextareaProps & {};
 
 // Redux, Reducer, Slice tyoes
 interface IAuthSlice {
@@ -112,3 +113,8 @@ interface IListDashboardHeading {
   heading?: string;
   description?: string;
 }
+
+type IModal = import("@chakra-ui/react").ModalProps & {
+  title?: string;
+  footerContent?: string | JSX.Element;
+};

@@ -4,6 +4,7 @@ import Head from "next/head";
 import React, { memo } from "react";
 import { Sidebar } from ".";
 import { RequireAuth } from "../shared";
+import { Heading } from "../text";
 
 const DashboardLayout: React.FC<IStackLayout> = ({
   children,
@@ -36,10 +37,20 @@ const DashboardLayout: React.FC<IStackLayout> = ({
             padding="10"
             rounded="lg"
             position="relative"
-            top="5"
+            top="10"
             className="min-h-{100%}"
           >
-            {children}
+            <ColumnStack
+              spacing="72px"
+              minHeight="full"
+              className="!items-start"
+            >
+              <FlowStack className="!justify-between border w-full">
+                <Heading as="h1">Dashboard</Heading>
+                <Box>See This here</Box>
+              </FlowStack>
+              {children}
+            </ColumnStack>
           </Box>
         </FlowStack>
         <Box>Footer</Box>

@@ -1,3 +1,4 @@
+import Modal from "./modal";
 import RequireAuth from "./require-auth";
 
-export { RequireAuth };
+export { RequireAuth, Modal };
