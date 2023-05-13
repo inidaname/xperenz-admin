@@ -1,3 +1,4 @@
-import CreateSweepTake from "./create-sweeptake";
+import CreatePrize from "./create-prize";
+import CreateSweepTake from "./create-sweepstake";
 
-export { CreateSweepTake };
+export { CreateSweepTake, CreatePrize };

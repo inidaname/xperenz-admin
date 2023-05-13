@@ -8,7 +8,7 @@ const FlowStack: React.FC<IStackLayout> = ({
   ...props
 }) => {
   return (
-    <HStack className={joinClasses("", className)} {...props}>
+    <HStack as="div" className={joinClasses("", className)} {...props}>
       {children}
     </HStack>
   );

@@ -1,17 +1,15 @@
+// Add a graph decided
 import React from "react";
-import { Inter } from "next/font/google";
 import {
-  DashboardLayout,
   DashboardListUsers,
   DashboardTable,
   Heading,
   ListDashboardHeading,
   Paragraph,
+  RequireAuth,
 } from "@design-system/template";
 import { Box, Card, ColumnStack, FlowStack } from "@design-system/components";
 import { Divider } from "@chakra-ui/react";
-
-const inter = Inter({ subsets: ["latin"] });
 
 const listHeading = [
   {
@@ -34,7 +32,7 @@ const listHeading = [
 
 export default function Home() {
   return (
-    <DashboardLayout title="Home">
+    <RequireAuth>
       <FlowStack className="!justify-between w-full">
         <ColumnStack spacing="16" className="!items-start w-2/3">
           <ColumnStack
@@ -52,7 +50,12 @@ export default function Home() {
               ))}
             </Box>
           </ColumnStack>
-          <ColumnStack width="full">
+          <ColumnStack
+            width="full"
+            bgColor="white"
+            padding="5"
+            className="!shadow !shadow-md rounded-lg"
+          >
             <FlowStack height="56px" alignItems="space-between" width="full">
               <ColumnStack className="w-1/2" alignItems="flex-start" px="4">
                 <Heading as="h6" fontWeight="light" size="md">
@@ -80,6 +83,6 @@ export default function Home() {
           <DashboardListUsers />
         </ColumnStack>
       </FlowStack>
-    </DashboardLayout>
+    </RequireAuth>
   );
 }
