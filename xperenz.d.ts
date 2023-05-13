@@ -34,7 +34,7 @@ interface ILabel
   labelFor: string;
 }
 
-interface IFieldSet extends ILayoutProp {}
+interface IFieldSet extends ReactChildren, className {}
 
 interface IInputFormControl extends className {}
 
