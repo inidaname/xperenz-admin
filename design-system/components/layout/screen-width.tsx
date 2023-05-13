@@ -7,7 +7,6 @@ const ScreenWidth: React.FC<IContainerProps> = ({
   className,
   ...props
 }) => {
-
   return (
     <div {...props} className={joinClasses(classes.base, className)}>
       {children}

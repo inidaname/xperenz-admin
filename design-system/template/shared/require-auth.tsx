@@ -18,8 +18,11 @@ const RequireAuth: React.FC<IRequiredAuth> = ({ children }) => {
     }
   }, [router]);
 
-  return <Box as="div">{authToken && children}</Box>
+  return (
+    <Box className="!w-full" as="div">
+      {authToken && children}
+    </Box>
+  );
 };
 
-
-export default RequireAuth
+export default RequireAuth;

@@ -18,8 +18,6 @@ interface IContainer
 
 type IContainerProps = IContainer & import("@chakra-ui/react").ContainerProps;
 
-type IContainerProps = IContainer & import("@chakra-ui/react").ContainerProps
-
 interface IAuthLayoutProps extends ReactChildren {
   title?: string;
 }
@@ -120,3 +118,17 @@ type IModal = import("@chakra-ui/react").ModalProps & {
   title?: string;
   footerContent?: string | JSX.Element;
 };
+
+type IDrawer = import("@chakra-ui/react").DrawerProps;
+type IDrawerContent = import("@chakra-ui/react").DrawerContentProps;
+
+type IUseDisclose = Pick<
+  import("@chakra-ui/react").UseDisclosureProps,
+  "isOpen" | "onClose" | "onOpen"
+>;
+interface IDrawerComponent extends ReactChildren {
+  size?: IDrawer["size"];
+  footer?: JSX.Element | string;
+  header?: JSX.Element | string;
+  button: ({}: IUseDisclose) => JSX.Element | string;
+}

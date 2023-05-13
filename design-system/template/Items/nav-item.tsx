@@ -28,10 +28,10 @@ export default function NavItem({
       <Menu placement="right">
         <Link
           href={href}
-          backgroundColor={active ? "#AEC8CA" : ""}
+          backgroundColor={active ? "#CA80B3" : ""}
           p={3}
           borderRadius={8}
-          _hover={{ textDecor: "none", backgroundColor: "#AEC8CA" }}
+          _hover={{ textDecor: "none", backgroundColor: "#CA80B3" }}
           w={navSize == "large" ? "100%" : ""}
         >
           <MenuButton w="100%">
@@ -41,7 +41,12 @@ export default function NavItem({
                 fontSize="xl"
                 color={active ? "#82AAAD" : "gray.500"}
               />
-              <Text ml={5} display={navSize == "small" ? "none" : "flex"}>
+              <Text
+                ml={5}
+                fontFamily="sans-serif"
+                color="black" // set active color
+                display={navSize == "small" ? "none" : "flex"}
+              >
                 {title}
               </Text>
             </Flex>

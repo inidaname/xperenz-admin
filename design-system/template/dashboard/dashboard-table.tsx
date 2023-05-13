@@ -14,7 +14,7 @@ import { Heading } from "../text";
 
 const DashboardTable: React.FC = () => {
   return (
-    <TableContainer width="full" shadow="md" p="5" rounded="md">
+    <TableContainer width="full" p="5" rounded="md">
       <Table
         className="bg-[#FCFCFC] table-fixed"
         variant="simple"
