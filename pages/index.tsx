@@ -1,6 +1,7 @@
 // Add a graph decided
 import React from "react";
 import {
+
   DashboardListUsers,
   DashboardTable,
   Heading,
@@ -10,6 +11,25 @@ import {
 } from "@design-system/template";
 import { Box, Card, ColumnStack, FlowStack } from "@design-system/components";
 import { Divider } from "@chakra-ui/react";
+
+const listHeading = [
+  {
+    heading: "30,000",
+    description: "Sweepstakes",
+  },
+  {
+    heading: "30,000",
+    description: "Participants",
+  },
+  {
+    heading: "30,000",
+    description: "Worth of Tickets",
+  },
+  {
+    heading: "12",
+    description: "Winners",
+  },
+];
 
 const listHeading = [
   {
