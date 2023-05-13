@@ -11,6 +11,7 @@ import React, { memo } from "react";
 import { Sidebar } from ".";
 import { RequireAuth } from "../shared";
 import { CreatePrize, CreateSweepTake } from "../sweeptakes";
+import { Heading } from "../text";
 
 const DashboardLayout: React.FC<IStackLayout> = ({
   children,
@@ -92,7 +93,6 @@ const DashboardLayout: React.FC<IStackLayout> = ({
                     </DrawerComponent>
                   </Box>
                 </ColumnStack>
-
               </FlowStack>
               {children}
             </ColumnStack>
