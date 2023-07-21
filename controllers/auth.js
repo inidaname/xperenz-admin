@@ -16,7 +16,7 @@ export const loginAdmin = async (req, res) => {
     const {email, password} = req.body
 
     const adminLogin = await admin.findOne({email}).select("+password")
-    const comPass = await adminLogin.comparePassword(password)
+    const comPass = adminLogin && await adminLogin.comparePassword(password)
 
     if (!comPass) throw {status: 400, message: "Invalid email or password"};
 

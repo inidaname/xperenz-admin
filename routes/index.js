@@ -4,7 +4,7 @@ import { loginAdmin } from "../controllers/auth.js";
 
 const routers = Router()
 
-routers.post("/create", createAdmin)
-routers.post("/login", loginAdmin)
+routers.post("/auth/create", createAdmin)
+routers.post("/auth/login", loginAdmin)
 
 export default routers

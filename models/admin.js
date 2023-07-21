@@ -12,7 +12,6 @@ export const adminSchema = new Schema({
   email: {
     type: String,
     required: [ true, "Please provide email" ],
-    unique: true
   },
   password: {
     type: String,
@@ -42,7 +41,7 @@ adminSchema.pre("save", function (next) {
 
   // generate a salt
 
-  bcrypt.genSalt(env.SALT_WORK_FACTOR, function (err, salt) {
+  bcrypt.genSalt(+env.SALT_WORK_FACTOR, function (err, salt) {
     if (err) return next(err);
 
     // hash the password using our new salt

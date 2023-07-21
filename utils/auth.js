@@ -9,8 +9,8 @@ import { JWTSign } from "../config/config.js";
  */
 
 export const createToken = (id) => {
-  if (!email) {
-    throw {status: 400, message: "Please provide email for authentication"}
+  if (!id) {
+    throw {status: 400, message: "Please provide payload for authentication"}
   }
 
   const token = jwt.sign({id}, env.TOKENSEC, {

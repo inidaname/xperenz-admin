@@ -6,6 +6,8 @@ import morgan from "morgan";
 import logger from "./utils/logger.js";
 import { PORT } from "./config/config.js";
 
+import http from "http"
+
 import dbConnect from "./utils/dbConnect.js";
 import { developmentErrors, notFound, productionErrors } from "./middleware/errorHandlers.js";
 
@@ -39,6 +41,12 @@ if (app.get('env') === 'development') {
 // production error handler
 app.use(productionErrors);
 
-app.listen(PORT, () => {
-  logger.info(`Admin is running on PORT: ${PORT}`)
+// app.listen( () => {
+//   logger.info(`Admin is running on PORT: ${PORT}`)
+// })
+
+let server = http.createServer(app)
+
+server.listen(51741, () => {
+  logger.info(`Admin is running on PORT: ${server.address().port}`)
 })
