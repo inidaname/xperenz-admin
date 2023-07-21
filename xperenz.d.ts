@@ -6,15 +6,17 @@ interface ReactChildren {
   children?: React.ReactNode | React.ReactElement;
 }
 
-interface ClassStyle {
-  classstyle?: string;
+interface className {
+  className?: string;
 }
 
 // Screen component props interface
-interface ILayoutProp
+interface IContainer
   extends React.HTMLAttributes<HTMLDivElement>,
     ReactChildren,
-    ClassStyle {}
+    className {}
+
+type IContainerProps = IContainer & import("@chakra-ui/react").ContainerProps;
 
 interface IAuthLayoutProps extends ReactChildren {
   title?: string;
@@ -28,17 +30,17 @@ interface IFormLogin {
 interface ILabel
   extends ReactChildren,
     React.HTMLAttributes<HTMLLabelElement>,
-    ClassStyle {
+    className {
   labelFor: string;
 }
 
-interface IFieldSet extends ILayoutProp {}
+interface IFieldSet extends ReactChildren, className {}
 
-interface IInputFormControl extends ClassStyle {}
+interface IInputFormControl extends className {}
 
-type IHeadingProp = import("@chakra-ui/react").HeadingProps & ClassStyle & {};
+type IHeadingProp = import("@chakra-ui/react").HeadingProps & {};
 
-interface IFormError extends ReactChildren, ClassStyle {}
+interface IFormError extends ReactChildren, className {}
 interface IRenderInput<T> {
   field: T;
 }
@@ -50,9 +52,10 @@ interface IFormError {
 
 type IInputTypes = IInputFormControl & import("@chakra-ui/react").InputProps;
 
-type ITextProps = import("@chakra-ui/react").TextProps & ClassStyle & {};
+type ITextProps = import("@chakra-ui/react").TextProps & {};
 
-type IButton = import("@chakra-ui/react").ButtonProps & ClassStyle & {};
+type IButton = import("@chakra-ui/react").ButtonProps & {};
+type ITextarea = import("@chakra-ui/react").TextareaProps & {};
 
 // Redux, Reducer, Slice tyoes
 interface IAuthSlice {
@@ -75,5 +78,57 @@ interface IToastOptions {
   type?: "info" | "warning" | "success" | "error" | "loading";
 }
 
+interface IRequiredAuth extends ReactChildren, className {}
 
-interface IRequiredAuth extends ReactChildren {}
+interface ILayout {
+  title?: string;
+}
+
+type IStackLayout = ILayout & import("@chakra-ui/react").StackProps;
+
+type ISideBarProps = import("@chakra-ui/react").FlexProps;
+
+interface IAuthUserData {}
+
+interface INavItemProp {
+  icon: React.ForwardRefExoticComponent<
+    import("@radix-ui/react-icons/dist/types").IconProps &
+      React.RefAttributes<SVGSVGElement>
+  >;
+  title: string;
+  href?: string;
+  description?: string;
+  active?: boolean;
+  navSize: string;
+}
+
+type IBox = import("@chakra-ui/react").BoxProps & {};
+
+type ICard = import("@chakra-ui/react").CardProps;
+type ICardFooter = import("@chakra-ui/react").CardFooterProps;
+type ICardHeader = import("@chakra-ui/react").CardHeaderProps;
+type ICardBody = import("@chakra-ui/react").CardBodyProps;
+
+interface IListDashboardHeading {
+  heading?: string;
+  description?: string;
+}
+
+type IModal = import("@chakra-ui/react").ModalProps & {
+  title?: string;
+  footerContent?: string | JSX.Element;
+};
+
+type IDrawer = import("@chakra-ui/react").DrawerProps;
+type IDrawerContent = import("@chakra-ui/react").DrawerContentProps;
+
+type IUseDisclose = Pick<
+  import("@chakra-ui/react").UseDisclosureProps,
+  "isOpen" | "onClose" | "onOpen"
+>;
+interface IDrawerComponent extends ReactChildren {
+  size?: IDrawer["size"];
+  footer?: JSX.Element | string;
+  header?: JSX.Element | string;
+  button: ({}: IUseDisclose) => JSX.Element | string;
+}

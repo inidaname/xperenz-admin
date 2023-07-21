@@ -2,7 +2,7 @@ import React from "react";
 import { Button as ChakraButton } from "@chakra-ui/react";
 import { joinClasses } from "@design-system/util/join-classes";
 
-const Button: React.FC<IButton> = ({ children, classstyle, ...props }) => {
+const Button: React.FC<IButton> = ({ children, className, ...props }) => {
   const rest: IButton = {
     shadow: props.shadow || "sm",
     width: props.width || "full",
@@ -19,7 +19,7 @@ const Button: React.FC<IButton> = ({ children, classstyle, ...props }) => {
       _active={{
         transform: "scale(0.99)",
       }}
-      className={joinClasses(classstyle)}
+      className={joinClasses(className)}
       {...rest}
     >
       {children}
