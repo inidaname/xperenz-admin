@@ -29,6 +29,7 @@ const Sidebar: React.FC<ISideBarProps> = ({
     marginTop: props.marginTop || "2.5vh",
     boxShadow: props.boxShadow || "0 4px 12px 0 rgba(0, 0, 0, 0.05)",
     flexDir: props.flexDir || "column",
+    px: props.px || navSize == "small" ? "15px" : "0",
     justifyContent: props.justifyContent || "space-between",
     ...props,
   };

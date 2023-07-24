@@ -6,11 +6,10 @@ import {
   InputFormControl,
   Textarea,
 } from "@design-system/components";
-import { Heading, RequireAuth } from "@design-system/template";
+import { Heading } from "@design-system/template";
 
 const CreateSweepTake = () => {
   return (
-    // <RequireAuth>
     <FlowStack width="full">
       <ColumnStack className="w-full h-auto h-14">
         <Heading as="h5" size="lg">
@@ -31,10 +30,7 @@ const CreateSweepTake = () => {
               <InputFormControl label="Tickets Quantity">
                 <Input type="number" placeholder="Sweepstake's Description" />
               </InputFormControl>
-              <InputFormControl
-                label="Sweepstake Image
-            "
-              >
+              <InputFormControl label="Sweepstake Image">
                 <Input type="file" placeholder="Sweepstake's Description" />
               </InputFormControl>
               <InputFormControl label="Sweepstake Banner">
@@ -44,9 +40,7 @@ const CreateSweepTake = () => {
           </FlowStack>
         </form>
       </ColumnStack>
-      {/* <ColumnStack height="160px" border="1px" className="flex-1"></ColumnStack> */}
     </FlowStack>
-    // </RequireAuth>
   );
 };
 
